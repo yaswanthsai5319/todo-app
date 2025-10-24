@@ -12,7 +12,6 @@ export class TodoService {
     ) {}
 
     async createTodo(title: string, description?: string): Promise<TodoTaskList> {
-        console.log("Creating todo with title:", title, "description:", description);
         const newTodo = this.todoRepository.create({ title, description });
         return this.todoRepository.save(newTodo);
     }
@@ -34,7 +33,6 @@ export class TodoService {
     }
 
     async update(id: number, data: Partial<TodoTaskList>): Promise<TodoTaskList> {
-        console.log("Updating todo with ID:", id, "Data:", data);
         data.updatedAt = new Date();
         await this.todoRepository.update(id, data);
         return this.findOne(id);
@@ -46,7 +44,6 @@ export class TodoService {
     }
 
     async deleteTodo(id: number): Promise<void> {
-        console.log("Deleting todo with ID:", id);
         await this.findOne(id); 
         await this.todoRepository.update(id, { isDeleted: true });
     }

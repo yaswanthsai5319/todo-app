@@ -32,7 +32,6 @@ const todoApis = {
 
     // Delete todo
     deleteTodo: async (id) => {
-        console.log("Deleting todoAPI with ID:", id);
         await api.put(`/todos/${id}/delete`);
     },
 }
